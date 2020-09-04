@@ -58,7 +58,6 @@ app.put('/student/:id', async (req, res) => {
 
 
 
-
 //DELETE
 app.delete('/student/:id', async (req, res) => {
 try {
