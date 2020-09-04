@@ -57,5 +57,4 @@ try {
 }
 });
 
-
 export { app as studentRouter };
