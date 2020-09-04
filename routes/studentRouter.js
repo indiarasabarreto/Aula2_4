@@ -31,27 +31,43 @@ try {
 //UPDATE
 app.path('student/:id', async (req, res) => {
   try {
-    const id = req.params.id;
-    const student = await studentModel.findByIdAndUpdate({_id: id}, req.body, { new: true });
-    
+    const student = await studentModel.findByIdAndUpdate(
+      req.params.id, 
+      req.body, 
+      { new: true }
+      );
     res.send(student);
   } catch (error) {
     res.status(500).send(error);
   }
 });
 
+//PUT
+app.put('/student/:id', async (req, res) => {
+  try {
+    const student = await studentModel.findByIdAndUpdate(
+      req.params.id, 
+      req.body, 
+      { new: true }
+      );
+    res.send(student);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+
+
 //DELETE
 app.delete('/student/:id', async (req, res) => {
 try {
   const student = await studentModel.findByIdAndDelete({_id: req.params.id});
-
   if (!student) {
     res.status(404).send('Documento nao encontrado na colecao');
   }
   else {
     res.send(200).send();
   }
-
 } catch (error) {
   res.status(500).send(error);
 }
